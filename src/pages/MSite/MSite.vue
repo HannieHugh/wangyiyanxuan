@@ -9,32 +9,13 @@
     </div>
     <div class="msite_nav">
       <ul class="navUl">
-          <span border-1px>
-            推荐
-          </span>
-        <span>
-            推荐
-          </span>
-        <span>
-            推荐
-          </span>
-        <span>
-            推荐
-          </span>
-        <span>
-            推荐
-          </span>
+          <span>推荐</span> <span>推荐</span> <span>推荐</span> <span>推荐</span>
+
       </ul>
       <div class="swiper-container">
         <ul class="msite_pics swiper-wrapper">
-          <li class="msite_pic swiper-slide">
-            <img src="https://yanxuan.nosdn.127.net/f8dcd65c11106261e0030638914c9b64.jpg?imageView&quality=75&thumbnail=750x0" alt="">
-          </li>
-          <li class="msite_pic swiper-slide">
-            <img src="https://yanxuan.nosdn.127.net/fc52e260d16abdff1a8777a713c67aa2.jpg?imageView&quality=75&thumbnail=750x0" alt="">
-          </li>
-          <li class="msite_pic swiper-slide">
-            slide3
+          <li class="msite_pic swiper-slide" v-if="msiteMsg.focusList.length>0" v-for="(focus,index) in msiteMsg.focusList" :key="index">
+            <img :src="focus.picUrl" alt="">
           </li>
         </ul>
         <!-- 如果需要分页器 -->
@@ -42,17 +23,9 @@
       </div>
 
       <ul class="after_sales">
-        <li class="after_sales_item">
+        <li class="after_sales_item" v-for="(policy,index) in msiteMsg.policyDescList" :key="index">
           <i class="icon—right"></i>
-          <span>网易自营品牌</span>
-        </li>
-        <li class="after_sales_item">
-          <i class="icon—right"></i>
-          <span>网易自营品牌</span>
-        </li>
-        <li class="after_sales_item">
-          <i class="icon—right"></i>
-          <span>网易自营品牌</span>
+          <span>{{policy.desc}}</span>
         </li>
       </ul>
     </div>
@@ -95,35 +68,11 @@
       </div>
       <div class="swiper-container2">
         <ul class="goodsHm">
-          <li class="goodsHmItem">
-            <img  class="itemImg" src="http://yanxuan.nosdn.127.net/f8a1351045e3a4848b81c3036d229c1c.png?imageView&quality=65&thumbnail=330x330" alt="">
-            <span class="itemText1 ellipsis">网易制造低压海盐制造低压海盐</span>
-            <span class="itemText2">古法散热古法snare</span>
-            <span class="itemPrice">￥199</span>
-          </li>
-          <li class="goodsHmItem">
-            <img  class="itemImg" src="http://yanxuan.nosdn.127.net/f8a1351045e3a4848b81c3036d229c1c.png?imageView&quality=65&thumbnail=330x330" alt="">
-            <span class="itemText1 ellipsis">网易制造低压海盐制造低压海盐</span>
-            <span class="itemText2">古法散热古法snare</span>
-            <span class="itemPrice">￥199</span>
-          </li>
-          <li class="goodsHmItem">
-            <img  class="itemImg" src="http://yanxuan.nosdn.127.net/f8a1351045e3a4848b81c3036d229c1c.png?imageView&quality=65&thumbnail=330x330" alt="">
-            <span class="itemText1 ellipsis">网易制造低压海盐制造低压海盐</span>
-            <span class="itemText2">古法散热古法snare</span>
-            <span class="itemPrice">￥199</span>
-          </li>
-          <li class="goodsHmItem">
-            <img  class="itemImg" src="http://yanxuan.nosdn.127.net/f8a1351045e3a4848b81c3036d229c1c.png?imageView&quality=65&thumbnail=330x330" alt="">
-            <span class="itemText1 ellipsis">网易制造低压海盐制造低压海盐</span>
-            <span class="itemText2">古法散热古法snare</span>
-            <span class="itemPrice">￥199</span>
-          </li>
-          <li class="goodsHmItem">
-            <img  class="itemImg" src="http://yanxuan.nosdn.127.net/f8a1351045e3a4848b81c3036d229c1c.png?imageView&quality=65&thumbnail=330x330" alt="">
-            <span class="itemText1 ellipsis">网易制造低压海盐制造低压海盐</span>
-            <span class="itemText2">古法散热古法snare</span>
-            <span class="itemPrice">￥199</span>
+          <li class="goodsHmItem" v-for="(newItem,index) in msiteMsg.newItemList" :key="index">
+            <img  class="itemImg" :src="newItem.listPicUrl" alt="">
+            <span class="itemText1 ellipsis">{{newItem.name}}</span>
+            <span class="itemText2">{{newItem.simpleDesc}}</span>
+            <span class="itemPrice">￥{{newItem.retailPrice}}</span>
           </li>
         </ul>
         <div class="swiper-pagination2"></div>
@@ -189,64 +138,27 @@
         <i class="toRight"></i>
       </div>
       <div class="wrapper1">
-        <div class="themeImages">
-          <img class="themeImage" src="https://yanxuan.nosdn.127.net/6aed8c47252129252cb1c14c6c856836.jpg?imageView&thumbnail=575y322&enlarge=1&quality=75" alt="">
-          <img class="themeImage" src="https://yanxuan.nosdn.127.net/6aed8c47252129252cb1c14c6c856836.jpg?imageView&thumbnail=575y322&enlarge=1&quality=75" alt="">
-          <img class="themeImage" src="https://yanxuan.nosdn.127.net/6aed8c47252129252cb1c14c6c856836.jpg?imageView&thumbnail=575y322&enlarge=1&quality=75" alt="">
-          <img class="themeImage" src="https://yanxuan.nosdn.127.net/6aed8c47252129252cb1c14c6c856836.jpg?imageView&thumbnail=575y322&enlarge=1&quality=75" alt="">
-          <img class="themeImage" src="https://yanxuan.nosdn.127.net/6aed8c47252129252cb1c14c6c856836.jpg?imageView&thumbnail=575y322&enlarge=1&quality=75" alt="">
+        <div class="themeImages" >
+          <img class="themeImage" :src="topic.itemPicUrl" v-for="(topic,index) in msiteMsg.topicList" :key="index" alt="">
         </div>
       </div>
 
     </div>
     <div class="homeGoods">
-      <div class="homeGoodsTitle">
-        <span>居家好物</span>
-      </div>
-      <ul class="homeGoodsList">
-        <li class="homeGoodsItem">
-          <img src="http://yanxuan.nosdn.127.net/52b9ee8f296cfd5f8157ac97c0874430.png?imageView&quality=65&thumbnail=330x330" alt="">
-          <div class="desc1">热销5万条热销5万条</div>
-          <div class="desc2">升级款白俄绒</div>
-          <div class="homeGoodP">￥1000</div>
+      <ul class="haowuType" v-for="(cate,index) in msiteMsg.cateList" :key="index"  >
+        <li class="homeGoodsTitle">
+          <span>{{cate.name}}好物</span>
         </li>
-        <li class="homeGoodsItem">
-          <img src="http://yanxuan.nosdn.127.net/52b9ee8f296cfd5f8157ac97c0874430.png?imageView&quality=65&thumbnail=330x330" alt="">
-          <div class="desc1">热销5万条热销5万条</div>
-          <div class="desc2">升级款白俄绒</div>
-          <div class="homeGoodP">￥1000</div>
-        </li>
-        <li class="homeGoodsItem">
-          <img src="http://yanxuan.nosdn.127.net/52b9ee8f296cfd5f8157ac97c0874430.png?imageView&quality=65&thumbnail=330x330" alt="">
-          <div class="desc1">热销5万条热销5万条</div>
-          <div class="desc2">升级款白俄绒</div>
-          <div class="homeGoodP">￥1000</div>
-        </li>
-        <li class="homeGoodsItem">
-          <img src="http://yanxuan.nosdn.127.net/52b9ee8f296cfd5f8157ac97c0874430.png?imageView&quality=65&thumbnail=330x330" alt="">
-          <div class="desc1">热销5万条热销5万条</div>
-          <div class="desc2">升级款白俄绒</div>
-          <div class="homeGoodP">￥1000</div>
-        </li>
-        <li class="homeGoodsItem">
-          <img src="http://yanxuan.nosdn.127.net/52b9ee8f296cfd5f8157ac97c0874430.png?imageView&quality=65&thumbnail=330x330" alt="">
-          <div class="desc1">热销5万条热销5万条</div>
-          <div class="desc2">升级款白俄绒</div>
-          <div class="homeGoodP">￥1000</div>
-        </li>
-        <li class="homeGoodsItem">
-          <img src="http://yanxuan.nosdn.127.net/52b9ee8f296cfd5f8157ac97c0874430.png?imageView&quality=65&thumbnail=330x330" alt="">
-          <div class="desc1">热销5万条热销5万条</div>
-          <div class="desc2">升级款白俄绒</div>
-          <div class="homeGoodP">￥1000</div>
-        </li>
-        <li class="homeGoodsItem">
-          <img src="http://yanxuan.nosdn.127.net/52b9ee8f296cfd5f8157ac97c0874430.png?imageView&quality=65&thumbnail=330x330" alt="">
-          <div class="desc1">热销5万条热销5万条</div>
-          <div class="desc2">升级款白俄绒</div>
-          <div class="homeGoodP">￥1000</div>
-        </li>
+        <ul class="homeGoodsList">
+          <li class="homeGoodsItem" v-for="(item,index) in cate.itemList" :key="index">
+            <img :src="item.listPicUrl" alt="">
+            <div class="desc1">{{item.simpleDesc}}</div>
+            <div class="desc2">{{item.name}}</div>
+            <div class="homeGoodP">￥{{item.retailPrice}}</div>
+          </li>
+        </ul>
       </ul>
+
 
     </div>
   </div>
@@ -257,10 +169,15 @@
   import Swiper from 'swiper'
   import 'swiper/dist/css/swiper.min.css'
   import BScroll from 'better-scroll'
+  import {mapState} from'vuex'
 
   //import FooterGuide from '../../components/FooterGuide/FooterGuide.vue'
   export default {
+    computed:{
+      ...mapState(['msiteMsg'])
+    },
     mounted(){
+      this.$store.dispatch('getMsite');
       new Swiper('.swiper-container',{
         loop: true, // 循环模式选项
 
@@ -277,7 +194,6 @@
         scrollX: true,
         click: true
       })
-
     },
     components:{
 
@@ -296,6 +212,7 @@
       bottom (-3850/$rem)
       left 0*/
     .msite_header
+      //position fixed
       width (750/$rem)
       padding (16/$rem) (30/$rem)
       display flex
@@ -541,14 +458,19 @@
       position: absolute
       top:(3400/$rem)
       left 0
-      .themeImages
-        width (4530/$rem)
-        height (453/$rem)
-        padding 0 (30/$rem) (30/$rem) (30/$rem)
-        .themeImage
-          border-radius (10/$rem)
-          margin-right (20/$rem)
-          float left
+      .wrapper1
+        width (670/$rem)
+        height (417/$rem)
+        padding-left (30/$rem)
+        display flex
+        .themeImages
+          display: flex
+          .themeImage
+            width (575/$rem)
+            height (322/$rem)
+            border-radius (10/$rem)
+            margin-right (20/$rem)
+            padding 0 (15/$rem) (30/$rem) 0
     .homeGoods
       position: absolute
       top:(3840/$rem)
