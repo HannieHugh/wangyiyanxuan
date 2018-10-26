@@ -33,11 +33,13 @@ export default {
     }
   },
   //获取分类信息
-  async getCategorys({commit}){
+  async getCategorys({commit},cb){
     const result = await reqCategorys();
     if(result.code===0){
       const categorys = result.data;
       commit(RECEIVECATEGORYS,{categorys})
+      //该回调函数是更新状态之后立即调用
+      typeof cb==='function' && cb()
     }
   },
 }

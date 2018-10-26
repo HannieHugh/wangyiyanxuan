@@ -7,7 +7,8 @@ import Goods from '../pages/Goods/Goods.vue'
 import Categorys from '../pages/Categorys/Categorys.vue'
 import Order from '../pages/Order/Order.vue'
 import Profile from '../pages/Profile/Profile.vue'
-
+import PhoneLogin from '../pages/PhoneLogin/PhoneLogin.vue'
+import EmailLogin from '../pages/EmailLogin/EmailLogin.vue'
 Vue.use(VueRouter);
 
 export default new VueRouter({
@@ -19,29 +20,49 @@ export default new VueRouter({
     },
     {
       path: '/msite',
-      component: MSite
+      component: MSite,
+      meta:{
+        footerShow:true
+      }
 
     },
     {
       path: '/goods',
-      component: Goods
+      component: Goods,
+      meta:{
+        footerShow:true
+      }
 
     },
     {
       path: '/categorys',
-      component: Categorys
+      component: Categorys,
+      meta:{
+        footerShow:true
+      }
 
     },
     {
       path: '/order',
-      component: Order
+      component: Order,
+      meta:{
+        footerShow:true
+      }
 
     },
     {
       path: '/profile',
       component: Profile
 
-    }
+    },
+    {
+      path: '/phone',
+      component: PhoneLogin
+    },
+    {
+      path: '/email',
+      component: EmailLogin,
 
+    }
   ]
 })

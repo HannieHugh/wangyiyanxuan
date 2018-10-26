@@ -11,8 +11,8 @@
       <div class="selloutGoods">
         <div class="picsContainer" >
           <ul class="picsUl">
-            <li  v-if="foods.column" class="eve" v-for="(eve,index) in foods.banner" :key="index">
-              <img v-if="foods.column" :src="eve.picUrl" alt="">
+            <li  v-if="foods.banner" class="eve" v-for="(eve,index) in foods.banner" :key="index">
+              <img v-if="foods.banner" :src="eve.picUrl" alt="">
             </li>
           </ul>
         </div>
@@ -109,19 +109,17 @@
               </ul>
             </div>
           </div>
-
-
         </div>
         <!--严选珍品-->
-        <div class="goodsPick">
-          <div class="picTitle">为你推荐</div>
+        <div class="goodsPick" v-if="foods.zhenOne">
+          <div class="picTitle" >{{foods.zhenOne.nickname}}</div>
           <div class="goodPic">
             <div class="mainGood zhenpin">
-              <div class="textYx">严选推荐</div>
+              <div class="textYx">{{foods.zhenOne.typename}}</div>
             </div>
-            <span>严选新中式厨房</span>
-            <span class="two">7.9元起</span>
-            <div class="desc">百款厨房好货，打造梦想厨房</div>
+            <span>{{foods.zhenOne.title}}</span>
+            <span class="two">{{foods.zhenOne.priceInfo}}元起</span>
+            <div class="desc">{{foods.zhenOne.subTitle}}</div>
           </div>
         </div>
         <!--严选推荐-->
@@ -129,56 +127,57 @@
           <div class="first">
             <div class="left">
               <div class="top">
-                <img src="//yanxuan.nosdn.127.net/cbf97b78af0639d4baa4caca09fd7f8a.jpg?imageView&quality=75&thumbnail=48y48" alt="">
-                <span class="around">周边组：mochale</span>
+                <img v-if="foods.zhenTwo" :src="foods.zhenTwo.avatar" alt="">
+                <span v-if="foods.zhenTwo" class="around">周边组：mochale</span>
               </div>
-              <div class="middle">大英博物馆周边商品</div>
-              <div class="bottom">每满199，立减10元</div>
+              <div v-if="foods.zhenTwo" class="middle">{{foods.zhenTwo.title}}</div>
+              <div v-if="foods.zhenTwo" class="bottom">{{foods.zhenTwo.subTitle}}</div>
 
             </div>
             <div class="right">
-
-              <div class="textYx">挑选师推荐</div>
+              <img v-if="foods.zhenTwo" :src="foods.zhenTwo.picUrl" alt="">
+              <div class="textYx" v-if="foods.zhenTwo">{{foods.zhenTwo.typeName}}</div>
             </div>
           </div>
           <div class="first">
             <div class="left">
               <div class="top">
-                <img src="//yanxuan.nosdn.127.net/cbf97b78af0639d4baa4caca09fd7f8a.jpg?imageView&quality=75&thumbnail=48y48" alt="">
-                <span class="around">周边组：mochale</span>
+                <img v-if="foods.zhenTwo" :src="foods.zhenThree.avatar" alt="">
+                <span v-if="foods.zhenTwo" class="around">周边组：mochale</span>
               </div>
-              <div class="middle">大英博物馆周边商品</div>
-              <div class="bottom">每满199，立减10元</div>
+              <div v-if="foods.zhenTwo" class="middle">{{foods.zhenThree.title}}</div>
+              <div v-if="foods.zhenTwo" class="bottom">{{foods.zhenThree.subTitle}}</div>
 
             </div>
             <div class="right">
-              <div class="textYx">挑选师推荐</div>
+              <img v-if="foods.zhenTwo" :src="foods.zhenTwo.picUrl" alt="">
+              <div class="textYx" v-if="foods.zhenThree">{{foods.zhenThree.typeName}}</div>
             </div>
           </div>
         </div>
         <!--严选look-->
-        <div class="yanxuanLook">
+        <div class="yanxuanLook" v-if="foods.yxLook">
           <div class="picTitle">严选LOOK</div>
-          <img src="//yanxuan.nosdn.127.net/6318a4720aade6f93bbad5b20ad29865.jpg?imageView&quality=75" alt="">
+          <img  :src="foods.yxLook.picUrl" alt="">
           <div class="rating">
             <div class="ratingTop">
-              <img src="//yanxuan.nosdn.127.net/485ff1be6912be6ae696b6d360d1b101.png?imageView&quality=75&thumbnail=48y48" alt="">
-              <span>1*******6</span>
+              <img :src="foods.yxLook.avatar" alt="">
+              <span>q*******r</span>
             </div>
-            <div class="ratingBtm">质量很好哦</div>
+            <div class="ratingBtm">{{foods.yxLook.content}}</div>
           </div>
         </div>
         <!--更多精彩-->
-        <div class="moreGreat">
+        <div class="moreGreat"  v-if="foods.findMore">
           <div class="todayTalk">
             <div class="yi"></div>
             <span>更多精彩</span>
             <div class="yi"></div>
           </div>
-          <div class="bkContainer">
+          <div class="bkContainer" v-for="(findOne,index) in foods.findMore" :key="index">
             <div class="baokuan">
-              <img src="//yanxuan.nosdn.127.net/89a770b9e7d31b81881e5fc17cf56202.jpg?imageView&quality=75" alt="">
-              <span>这些爆款就是这么红</span>
+              <img :src="findOne.itemPicUrl" alt="">
+              <span>{{findOne.title}}</span>
             </div>
           </div>
 
@@ -395,10 +394,6 @@
                 font-size: .32rem
                 color #7f7f7f
             .right
-              /*background-image url(//yanxuan.nosdn.127.net/120b13f858c9d3eebba8e2d898e91915.jpg?imageView&quality=75)
-              background-repeat no-repeat
-              background-size cover
-              background-position center*/
               width (280/$rem)
               height:(272/$rem)
               position: relative
@@ -536,7 +531,10 @@
               display flex
               align-items center
               img
+                width (40/$rem)
+                height (40/$rem)
                 margin-right (14/$rem)
+                border-radius 50%
               span
                 color #333333
                 font-size (20/$rem)

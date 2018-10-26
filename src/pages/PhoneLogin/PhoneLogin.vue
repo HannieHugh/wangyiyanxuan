@@ -1,21 +1,29 @@
 <template>
-  <div class="profile">
+  <div class="phoneLogin">
     <Header/>
     <div class="line1"></div>
     <div class="wyYxImg">
       <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
     </div>
-    <div class="loginBtn">
-      <div class="phoneBtn" @click="$router.push('/phone')">
-        <i class="phoneIcon"></i>
-        手机号码登录
+    <div class="middle">
+      <div class="inputNum">请输入手机号</div>
+      <div class="code">请输入短信验证码
+        <div class="getCode">获取验证码</div>
       </div>
-      <div class="emailBtn" @click="$router.push('/email')">
-        <i class="emailIcon"></i>
-        邮箱账号登录
+      <div class="problem" >
+        <span>遇到问题</span>
+        <span>使用密码验证登录</span>
+      </div>
+    </div>
+    <div class="loginBtn">
+      <div class="phoneBtn" @click="$router.push('/personal')">
+        登录
+      </div>
+      <div class="emailBtn" @click="$router.push('/profile')">
+        其他登录方式
       </div>
       <div class="phone-register" >
-      手机号快捷注册
+        注册账号
       </div>
       <i class="arrow-right"></i>
     </div>
@@ -33,9 +41,7 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixins.styl"
-  body
-    background: rgba(0,0,0,.05)
-  .profile
+  .phoneLogin
     width 100%
     height 100%
 
@@ -44,10 +50,10 @@
       justify-content center
       align-items center
       width:(750/$rem)
-      height (410/$rem)
+      height (310/$rem)
       >img
-        width:(134*2/$rem)
-        height (90/$rem)
+        width:(96*2/$rem)
+        height (32*2/$rem)
 
     .loginBtn
       width:(750/$rem)
@@ -66,15 +72,6 @@
         align-items center
         justify-content center
         color: #fff
-        .phoneIcon
-          color: #fff
-          margin-right (32/$rem)
-          width (40/$rem)
-          height (40/$rem)
-          background-repeat no-repeat
-          background-position 0 (-49/$rem)
-          background-size (40/$rem) 3.86667rem;
-          background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/login-s2d0d826858-b284a621da.png)
       .emailBtn
         width:(335*2/$rem)
         height:(47*2/$rem)
@@ -85,15 +82,6 @@
         align-items center
         justify-content center
         color #b4282d
-        .emailIcon
-          color: #b4282d
-          margin-right (32/$rem)
-          width (40/$rem)
-          height (40/$rem)
-          background-repeat no-repeat
-          background-position 0 0
-          background-size (40/$rem) 3.86667rem;
-          background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/login-s2d0d826858-b284a621da.png)
       .phone-register
         font-size (32/$rem)
       .arrow-right
@@ -103,7 +91,47 @@
         background-repeat no-repeat
         position absolute
         top 3.53rem
-        right 3.1rem
+        right 3.6rem
         background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/arrow-right3-c1ab37e88b.png)
+    .middle
+      padding-left (70/$rem)
+      display flex
+      flex-direction column
+      justify-content center
+      margin-bottom (50/$rem)
+      .inputNum
+        width (600/$rem)
+        height (46/$rem)
+        border-bottom (.03/$rem) solid #7e8c8d
+        font-size .36rem
+        color #7e8c8d
+      .code
+        width 88%
+        height (106/$rem)
+        border-bottom (.03/$rem) solid #7e8c8d
+        font-size .36rem
+        padding-top (50/$rem)
+        box-sizing border-box
+        color #7e8c8d
+        display flex
+        justify-content space-between
+        .getCode
+          width (170/$rem)
+          height (50/$rem)
+          line-height (50/$rem)
+          text-align center
+          border (1/$rem) solid #7e8c8d
+          border-radius 10%
+      .problem
+        width 90%
+        height (66/$rem)
+        display flex
+        justify-content space-between
+        padding-top (50/$rem)
+        box-sizing border-box
+        >span
+          font-size .36rem
+          color #7e8c8d
+
 </style>
 

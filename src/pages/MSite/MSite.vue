@@ -1,166 +1,180 @@
 <template>
   <div class="msite">
     <div class="msite_header">
-      <a class="logo" href="javascrip:;"></a>
-      <div class="msite_search">
-        <i class="search-icon"></i>
-        <span>搜索商品，共16740件好物</span>
+      <div class="topHeader">
+        <a class="logo" href="javascrip:;"></a>
+        <div class="msite_search">
+          <i class="search-icon"></i>
+          <span>搜索商品，共16740件好物</span>
+        </div>
       </div>
-    </div>
-    <div class="msite_nav">
-      <ul class="navUl">
-          <span>推荐</span> <span>推荐</span> <span>推荐</span> <span>推荐</span>
+      <div class="scroll">
+        <ul class="navUl">
+          <div>推荐</div>
+          <div>推荐</div>
+          <div>推荐</div>
+          <div>推荐</div>
+          <div>推荐</div>
+          <div>推荐</div>
+          <div>推荐</div>
+          <div>推荐</div>
+        </ul>
+      </div>
 
-      </ul>
-      <div class="swiper-container">
-        <ul class="msite_pics swiper-wrapper">
-          <li class="msite_pic swiper-slide" v-if="msiteMsg.focusList.length>0" v-for="(focus,index) in msiteMsg.focusList" :key="index">
-            <img :src="focus.picUrl" alt="">
+    </div>
+    <div class="content">
+      <div class="msite_nav">
+        <div class="swiper-container">
+          <ul class="msite_pics swiper-wrapper">
+            <li class="msite_pic swiper-slide" v-if="msiteMsg.focusList.length>0" v-for="(focus,index) in msiteMsg.focusList" :key="index">
+              <img :src="focus.picUrl" alt="">
+            </li>
+          </ul>
+          <!-- 如果需要分页器 -->
+          <div class="swiper-pagination"></div>
+        </div>
+
+        <ul class="after_sales">
+          <li class="after_sales_item" v-for="(policy,index) in msiteMsg.policyDescList" :key="index">
+            <i class="icon—right"></i>
+            <span>{{policy.desc}}</span>
           </li>
         </ul>
-        <!-- 如果需要分页器 -->
-        <div class="swiper-pagination"></div>
       </div>
-
-      <ul class="after_sales">
-        <li class="after_sales_item" v-for="(policy,index) in msiteMsg.policyDescList" :key="index">
-          <i class="icon—right"></i>
-          <span>{{policy.desc}}</span>
-        </li>
-      </ul>
-    </div>
-    <div class="businessGoods clearFix">
-      <div class="business">
-        <span class="theme">品牌制造商直供</span>
-        <i class="toRight"></i>
+      <div class="businessGoods clearFix">
+        <div class="business">
+          <span class="theme">品牌制造商直供</span>
+          <i class="toRight"></i>
+        </div>
+        <ul class="goodsListOne">
+          <li class="goodOne">
+            <span>ck制造商</span>
+            <span>25元起</span>
+            <i class="shangxin-icon"></i>
+          </li>
+          <li class="goodOne">
+            <span>ck制造商</span>
+            <span>25元起</span>
+            <i class="shangxin-icon"></i>
+          </li>
+          <li class="goodOne">
+            <span>ck制造商</span>
+            <span>25元起</span>
+            <i class="shangxin-icon"></i>
+          </li>
+          <li class="goodOne">
+            <span>ck制造商</span>
+            <span>25元起</span>
+            <i class="shangxin-icon"></i>
+          </li>
+        </ul>
       </div>
-      <ul class="goodsListOne">
-        <li class="goodOne">
-          <span>ck制造商</span>
-          <span>25元起</span>
-          <i class="shangxin-icon"></i>
-        </li>
-        <li class="goodOne">
-          <span>ck制造商</span>
-          <span>25元起</span>
-          <i class="shangxin-icon"></i>
-        </li>
-        <li class="goodOne">
-          <span>ck制造商</span>
-          <span>25元起</span>
-          <i class="shangxin-icon"></i>
-        </li>
-        <li class="goodOne">
-          <span>ck制造商</span>
-          <span>25元起</span>
-          <i class="shangxin-icon"></i>
-        </li>
-      </ul>
-    </div>
-    <div class="newGoods">
-      <div class="newGoodsTitle">
+      <div class="newGoods">
+        <div class="newGoodsTitle">
         <span class="parent">
            <span class="newTitle">新品首发</span>
            <span class="lookAllBtn">查看全部
            <i class="arrow-right"></i>
         </span>
         </span>
+        </div>
+        <div class="swiper-container2">
+          <ul class="goodsHm">
+            <li class="goodsHmItem" v-for="(newItem,index) in msiteMsg.newItemList" :key="index">
+              <img  class="itemImg" :src="newItem.listPicUrl" alt="">
+              <span class="itemText1 ellipsis">{{newItem.name}}</span>
+              <span class="itemText2">{{newItem.simpleDesc}}</span>
+              <span class="itemPrice">￥{{newItem.retailPrice}}</span>
+            </li>
+          </ul>
+          <div class="swiper-pagination2"></div>
+        </div>
       </div>
-      <div class="swiper-container2">
-        <ul class="goodsHm">
-          <li class="goodsHmItem" v-for="(newItem,index) in msiteMsg.newItemList" :key="index">
-            <img  class="itemImg" :src="newItem.listPicUrl" alt="">
-            <span class="itemText1 ellipsis">{{newItem.name}}</span>
-            <span class="itemText2">{{newItem.simpleDesc}}</span>
-            <span class="itemPrice">￥{{newItem.retailPrice}}</span>
-          </li>
-        </ul>
-        <div class="swiper-pagination2"></div>
-      </div>
-    </div>
-    <div class="newGoods two">
-      <div class="newGoodsTitle">
+      <div class="newGoods two">
+        <div class="newGoodsTitle">
         <span class="parent">
            <span class="newTitle">人气推荐，好物精选</span>
            <span class="lookAllBtn">查看全部
            <i class="arrow-right"></i>
         </span>
         </span>
+        </div>
+        <div class="swiper-container2" >
+          <ul class="goodsHm swiper-wrapper">
+            <li class="goodsHmItem swiper-slide">
+              <img  class="itemImg" src="http://yanxuan.nosdn.127.net/f8a1351045e3a4848b81c3036d229c1c.png?imageView&quality=65&thumbnail=330x330" alt="">
+              <span class="itemText1 ellipsis">网易制造低压海盐制造低压海盐</span>
+              <span class="itemText2">古法散热古法snare</span>
+              <span class="itemPrice">￥199</span>
+            </li>
+            <li class="goodsHmItem swiper-slide">
+              <img  class="itemImg" src="http://yanxuan.nosdn.127.net/f8a1351045e3a4848b81c3036d229c1c.png?imageView&quality=65&thumbnail=330x330" alt="">
+              <span class="itemText1 ellipsis">网易制造低压海盐制造低压海盐</span>
+              <span class="itemText2">古法散热古法snare</span>
+              <span class="itemPrice">￥199</span>
+            </li>
+            <li class="goodsHmItem swiper-slide">
+              <img  class="itemImg" src="http://yanxuan.nosdn.127.net/f8a1351045e3a4848b81c3036d229c1c.png?imageView&quality=65&thumbnail=330x330" alt="">
+              <span class="itemText1 ellipsis">网易制造低压海盐制造低压海盐</span>
+              <span class="itemText2">古法散热古法snare</span>
+              <span class="itemPrice">￥199</span>
+            </li>
+          </ul>
+          <div class="swiper-pagination2"></div>
+        </div>
       </div>
-      <div class="swiper-container2" >
-        <ul class="goodsHm swiper-wrapper">
-          <li class="goodsHmItem swiper-slide">
-            <img  class="itemImg" src="http://yanxuan.nosdn.127.net/f8a1351045e3a4848b81c3036d229c1c.png?imageView&quality=65&thumbnail=330x330" alt="">
-            <span class="itemText1 ellipsis">网易制造低压海盐制造低压海盐</span>
-            <span class="itemText2">古法散热古法snare</span>
-            <span class="itemPrice">￥199</span>
-          </li>
-          <li class="goodsHmItem swiper-slide">
-            <img  class="itemImg" src="http://yanxuan.nosdn.127.net/f8a1351045e3a4848b81c3036d229c1c.png?imageView&quality=65&thumbnail=330x330" alt="">
-            <span class="itemText1 ellipsis">网易制造低压海盐制造低压海盐</span>
-            <span class="itemText2">古法散热古法snare</span>
-            <span class="itemPrice">￥199</span>
-          </li>
-          <li class="goodsHmItem swiper-slide">
-            <img  class="itemImg" src="http://yanxuan.nosdn.127.net/f8a1351045e3a4848b81c3036d229c1c.png?imageView&quality=65&thumbnail=330x330" alt="">
-            <span class="itemText1 ellipsis">网易制造低压海盐制造低压海盐</span>
-            <span class="itemText2">古法散热古法snare</span>
-            <span class="itemPrice">￥199</span>
-          </li>
-        </ul>
-        <div class="swiper-pagination2"></div>
-      </div>
-    </div>
-    <div class="setTimeSell">
-      <div class="TimeSellContent">
-        <div class="contentLeft">
-          <span class="shopTime">严选限时购</span>
-          <div class="time">
-            <div>00</div>:
-            <div>00</div>:
-            <div>00</div>
+      <div class="setTimeSell">
+        <div class="TimeSellContent">
+          <div class="contentLeft">
+            <span class="shopTime">严选限时购</span>
+            <div class="time">
+              <div>00</div>:
+              <div>00</div>:
+              <div>00</div>
+            </div>
+            <span class="nextTime">下一场4.30开始</span>
           </div>
-          <span class="nextTime">下一场4.30开始</span>
-        </div>
-        <div class="contentRight">
-          <img src="http://yanxuan.nosdn.127.net/537a8e94f55864b5b71397f90ae8f49e.png?imageView&quality=85&thumbnail=330x330" alt="">
-          <div class="yellowSell">
-            <span class="nowP">￥266</span>
-            <span class="oldP">￥288</span>
+          <div class="contentRight">
+            <img src="http://yanxuan.nosdn.127.net/537a8e94f55864b5b71397f90ae8f49e.png?imageView&quality=85&thumbnail=330x330" alt="">
+            <div class="yellowSell">
+              <span class="nowP">￥266</span>
+              <span class="oldP">￥288</span>
+            </div>
           </div>
         </div>
+        <img  class="fulishe" src="http://yanxuan.nosdn.127.net/a3ea2d1108c94c7dece05eddf95f6df5.jpg" alt="">
       </div>
-      <img  class="fulishe" src="http://yanxuan.nosdn.127.net/a3ea2d1108c94c7dece05eddf95f6df5.jpg" alt="">
-    </div>
-    <div class="selectedTheme businessGoods">
-      <div class="business">
-        <span class="theme">专题精选</span>
-        <i class="toRight"></i>
-      </div>
-      <div class="wrapper1">
-        <div class="themeImages" >
-          <img class="themeImage" :src="topic.itemPicUrl" v-for="(topic,index) in msiteMsg.topicList" :key="index" alt="">
+      <div class="selectedTheme businessGoods">
+        <div class="business">
+          <span class="theme">专题精选</span>
+          <i class="toRight"></i>
         </div>
+        <div class="wrapper1">
+          <div class="themeImages" >
+            <img class="themeImage" :src="topic.itemPicUrl" v-for="(topic,index) in msiteMsg.topicList" :key="index" alt="">
+          </div>
+        </div>
+
       </div>
-
-    </div>
-    <div class="homeGoods">
-      <ul class="haowuType" v-for="(cate,index) in msiteMsg.cateList" :key="index"  >
-        <li class="homeGoodsTitle">
-          <span>{{cate.name}}好物</span>
-        </li>
-        <ul class="homeGoodsList">
-          <li class="homeGoodsItem" v-for="(item,index) in cate.itemList" :key="index">
-            <img :src="item.listPicUrl" alt="">
-            <div class="desc1">{{item.simpleDesc}}</div>
-            <div class="desc2">{{item.name}}</div>
-            <div class="homeGoodP">￥{{item.retailPrice}}</div>
+      <div class="homeGoods">
+        <ul class="haowuType" v-for="(cate,index) in msiteMsg.cateList" :key="index"  >
+          <li class="homeGoodsTitle">
+            <span>{{cate.name}}好物</span>
           </li>
+          <ul class="homeGoodsList">
+            <li class="homeGoodsItem" v-for="(item,index) in cate.itemList" :key="index">
+              <img :src="item.listPicUrl" alt="">
+              <div class="desc1">{{item.simpleDesc}}</div>
+              <div class="desc2">{{item.name}}</div>
+              <div class="homeGoodP">￥{{item.retailPrice}}</div>
+            </li>
+          </ul>
         </ul>
-      </ul>
 
 
+      </div>
     </div>
+
   </div>
 
 </template>
@@ -214,54 +228,59 @@
     .msite_header
       //position fixed
       width (750/$rem)
-      padding (16/$rem) (30/$rem)
-      display flex
+      padding (16/$rem) (30/$rem) 0
+      //display flex
       align-items center
-      .logo
-        width: (138/$rem)
-        height: (39.98/$rem)
-        background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/indexLogo-11d65342f9.png)
-        background-size cover
-        //background-position 0 (40/$rem)
-        display inline-block
-        background-position center
-        margin-right:(20/$rem);
-      .msite_search
-        margin-right (20/$rem)
-        border-radius (10/$rem)
-        background-color #ededed
-        width (532/$rem)
-        height (56/$rem)
-        line-height (87.97/$rem)
-        text-align: center
-        display: flex
+      .topHeader
+        display flex
         align-items center
-        justify-content center
-        .search-icon
-          width (27.98/$rem)
-          height (27.98/$rem)
-          background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-2fb94833aa.png)
+        .logo
+          width: (138/$rem)
+          height: (39.98/$rem)
+          background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/indexLogo-11d65342f9.png)
+          background-size cover
+          //background-position 0 (40/$rem)
+          display inline-block
+          background-position center
+          margin-right:(20/$rem);
+        .msite_search
           margin-right (20/$rem)
-        span
-          font-size $fontSize
-          color #666
-          line-height: (56/$rem)
+          border-radius (10/$rem)
+          background-color #ededed
+          width (532/$rem)
+          height (56/$rem)
+          line-height (87.97/$rem)
+          text-align: center
+          display: flex
+          align-items center
+          justify-content center
+          .search-icon
+            width (27.98/$rem)
+            height (27.98/$rem)
+            background-image url(//yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/search2-2fb94833aa.png)
+            margin-right (20/$rem)
+          span
+            font-size $fontSize
+            color #666
+            line-height: (56/$rem)
+
+      .scroll
+        width 100%
+        //display flex
+        margin-top (20/$rem)
+        .navUl
+          display flex
+          //top-border-1px(#e4e4e4)
+          margin-left (-66/$rem)
+          >div
+            line-height (60/$rem)
+            font-size $fontSize
+            text-align center
+            height (60/$rem)
+            width (19/750)%
     .msite_nav
       width (1591.47/$rem)
       height:(60/$rem)
-      .navUl
-        width 100%
-        height 100%
-        display flex
-        top-border-1px(#e4e4e4)
-        span
-          padding (16/$rem)
-          display block
-          font-size $fontSize
-          flex 0.1
-          text-align center
-          height (60/$rem)
-          //line-height (60/$rem)
       .msite_pics
         width:(750*3/$rem)
         height:(400/$rem)

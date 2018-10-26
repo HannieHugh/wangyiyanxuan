@@ -9,43 +9,32 @@
     <div class="categoryContent">
       <div class="contentLeft">
         <div class="leftItem">
-          <span :class="{sline:currentIndex===index}" @click="rightShow(index,category)"
-                v-for="(category,index) in categorys" :key="index">
-            <span>
-              {{category.name}}
-            </span>
-          </span>
+          <span @click="rightShow(index)" v-for="(category,index) in categorys" :key="index">{{category.name}}</span>
         </div>
       </div>
       <!--<RightItem :subCateList="subCateList"/>-->
-      <div class="contentRight" v-if="!subCateList.length && categorys[0]">
-        <ul class="container">
-          <div class="topImg">
-            <img :src="categorys[0].bannerUrl" alt="">
+      <div class="contentRight">
+        <div class="topImg" v-for="(subCate,index) in subCateList" :key="index">
+          <img :src="subCate.bannerUrl" alt="">
+        </div>
+        <div class="itemUl">
+          <div class="itemOne">
+            <img src="http://yanxuan.nosdn.127.net/c06501bfcc69f11a3e757eb1d4aa711d.png?imageView&quality=85&thumbnail=144x144" alt="">
+            <div>居家新品</div>
           </div>
-          <div class="itemUl">
-            <div class="itemOne" v-for="(subCate,index) in categorys[0].subCateList" :key="index">
-              <img :src="subCate.wapBannerUrl" alt="">
-              <div>{{subCate.name}}</div>
-            </div>
-          </div>
-        </ul>
+          <div class="itemOne">
+            <img src="http://yanxuan.nosdn.127.net/c06501bfcc69f11a3e757eb1d4aa711d.png?imageView&quality=85&thumbnail=144x144" alt="">
+            <div>居家新品</div>
+          </div><div class="itemOne">
+          <img src="http://yanxuan.nosdn.127.net/c06501bfcc69f11a3e757eb1d4aa711d.png?imageView&quality=85&thumbnail=144x144" alt="">
+          <div>居家新品</div>
+        </div><div class="itemOne">
+          <img src="http://yanxuan.nosdn.127.net/c06501bfcc69f11a3e757eb1d4aa711d.png?imageView&quality=85&thumbnail=144x144" alt="">
+          <div>居家新品</div>
+        </div>
+
+        </div>
       </div>
-      <!--<div class="contentRight" v-else="subCateList">
-        <ul class="container">
-          <div class="topImg">
-            <img :src="category.bannerUrl" alt="">
-          </div>
-          <div class="itemUl">
-            <div class="itemOne" v-for="(subCate,index) in subCateList" :key="index">
-              <img :src="subCate.wapBannerUrl" alt="">
-              <div>{{subCate.name}}</div>
-            </div>
-          </div>
-        </ul>
-
-
-        </div>-->
       </div>
     </div>
 </template>
@@ -57,9 +46,7 @@
   export default {
     data(){
       return{
-        subCateList:[],
-        category:{},
-        currentIndex:0
+        subCateList:[]
       }
 
     },
@@ -68,28 +55,17 @@
       new BScroll('.contentLeft',{
         click:true
       })
-      new BScroll('.contentRight',{
-        click:true
-      })
     },
     computed:{
-      ...mapState(['categorys'],()=>{
-        this.$nextTick(()=>{
-          this.category = this.categorys[0]
-          this.subCateList = this.categorys[0].subCateList
-        })
-      }),
+      ...mapState(['categorys']),
      /* getRightFood(){
 
       }*/
 
     },
     methods:{
-      rightShow(index,category){
-        //console.log('---')
-        this.subCateList = this.categorys[index].subCateList
-        this.category = category
-        this.currentIndex = index;
+      rightShow(index){
+        let {subCateList} = this.categorys[index]
       }
     },
     components:{
@@ -101,7 +77,8 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
 @import "../../common/stylus/mixins.styl"
-
+  body
+    overflow: hidden
   .category
     width 100%
     height 100%
@@ -144,7 +121,6 @@
           padding (40/$rem) 0 2rem 0
 
           >span
-            box-sizing border-box
             font-size .37333rem
             text-align center
             margin-bottom (60/$rem)
@@ -152,26 +128,15 @@
             width (162/$rem)
             height (40/$rem)
             line-height (40/$rem)
-            position: relative;
+            &.on
+              color #ab2b2b
             &.sline
-              &::after
-                content: ''
-                height: 100%
-                width .08rem
-                display: block
-                position: absolute
-                top: 0
-                left:0
-                background #ab2b2b
-              >span
-                color #ab2b2b
+              border-left (6/$rem) solid #ab2b2b
 
       .contentRight
         width (528/$rem)
         height (1088/$rem)
         padding (30/$rem) (30/$rem) (21/$rem) (30/$rem)
-        display flex
-        flex-direction column
         .topImg
           >img
             width (528/$rem)
