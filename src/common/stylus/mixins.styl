@@ -33,6 +33,17 @@ top-border-1px($color)
     height (1/$rem)
     background-color $color
 
+widthLine($px)
+  position absolute
+  &::before
+    content ''
+    bottom 0
+    left 0
+    width $px
+    height (40/$rem)
+    background-color #f4f4f4
+
+
 //根据像素比缩放1px像素边框
 @media only screen and (-webkit-device-pixel-ratio: 2 )
   .border-1px

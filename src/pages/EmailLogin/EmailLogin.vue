@@ -6,15 +6,19 @@
       <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
     </div>
     <div class="middle">
-      <div class="inputNum">邮箱账号</div>
-      <div class="code">密码</div>
+      <div class="inputNum">
+        <input type="text" placeholder="邮箱账号" style="outline: none" v-model="email">
+      </div>
+      <div class="code">
+        <input type="password" placeholder="密码" style="outline: none" v-model="pwd">
+      </div>
       <div class="problem" >
         <span>注册账号</span>
         <span>忘记密码</span>
       </div>
     </div>
     <div class="loginBtn">
-      <div class="phoneBtn" @click="$router.push('/personal')">
+      <div class="phoneBtn" @click="login">
         登录
       </div>
       <div class="emailBtn" @click="$router.push('/profile')">
@@ -26,9 +30,38 @@
 
 <script>
   import Header from '../../components/Header/Header.vue'
+  import {Toast,MessageBox} from 'mint-ui'
+
   export default {
+    data(){
+      return{
+        email:'',
+        pwd:'',
+      }
+    },
+    computed:{
+      rightMaile(){
+        return /^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/.test(this.email)
+      },
+      rightPwd(){
+        return /^d{6}$/.test(this.pwd)
+      }
+    },
     components:{
       Header
+    },
+    methods:{
+      login(){
+        //前台表单验证
+        if(!this.rightMaile){
+          MessageBox.alert('确定','手机号输入错误')
+        }else if(!this.rightPwd){
+          MessageBox.alert('确定','验证码错误')
+        }else{
+          this.$router.push('/personal')
+        }
+
+      }
     }
   }
 </script>

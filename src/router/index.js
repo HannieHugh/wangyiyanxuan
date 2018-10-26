@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import App from '../App.vue'
+import Enter from '../pages/Enter/Enter.vue'
 import MSite from '../pages/MSite/MSite.vue'
 import Goods from '../pages/Goods/Goods.vue'
 import Categorys from '../pages/Categorys/Categorys.vue'
@@ -15,7 +15,7 @@ export default new VueRouter({
   routes:[
     {
       path: '/',
-      component: App
+      component: Enter
 
     },
     {

@@ -6,8 +6,11 @@
       <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
     </div>
     <div class="middle">
-      <div class="inputNum">请输入手机号</div>
-      <div class="code">请输入短信验证码
+      <div class="inputNum">
+        <input type="text" placeholder="请输入手机号" style="outline:none" v-model="phone">
+        </div>
+      <div class="code">
+        <input type="text" placeholder="请输入短信验证码" style="outline:none" v-model="msgCode">
         <div class="getCode">获取验证码</div>
       </div>
       <div class="problem" >
@@ -16,7 +19,7 @@
       </div>
     </div>
     <div class="loginBtn">
-      <div class="phoneBtn" @click="$router.push('/personal')">
+      <div class="phoneBtn" @click="login">
         登录
       </div>
       <div class="emailBtn" @click="$router.push('/profile')">
@@ -32,9 +35,38 @@
 
 <script>
   import Header from '../../components/Header/Header.vue'
+  import {Toast,MessageBox} from 'mint-ui'
   export default {
+    data(){
+      return{
+        phone:'',
+        msgCode:'',
+      }
+    },
+    computed:{
+      rightPhone(){
+        return /^1\d{10}$/.test(this.phone)
+      },
+      rightCode(){
+        return /^d{4}$/.test(this.msgCode)
+      }
+    },
+
     components:{
       Header
+    },
+    methods:{
+      login(){
+        //前台表单验证
+        if(!this.rightPhone){
+          MessageBox.alert('确定','手机号输入错误')
+        }else if(!this.rightCode){
+          MessageBox.alert('确定','验证码错误')
+        }else{
+          this.$router.push('/personal')
+        }
+
+      }
     }
   }
 </script>

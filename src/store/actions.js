@@ -15,11 +15,12 @@ import {
 
 export default {
   //异步获取第一屏信息
-  async getMsite({commit}){
+  async getMsite({commit},cb){
     const result = await reqMsite();
     if(result.code===0){
       const msiteMsg = result.data;
-      commit(RECEIVEMSITE,{msiteMsg})
+      commit(RECEIVEMSITE,{msiteMsg});
+      typeof cb==='function' && cb()
     }
   },
   //获取食物信息

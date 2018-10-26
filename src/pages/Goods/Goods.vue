@@ -9,9 +9,9 @@
     <div class="goodsContent">
       <!--严选断货补单王-->
       <div class="selloutGoods">
-        <div class="picsContainer" >
-          <ul class="picsUl">
-            <li  v-if="foods.banner" class="eve" v-for="(eve,index) in foods.banner" :key="index">
+        <div class="picsContainer swiper-container" >
+          <ul class="picsUl swiper-wrapper">
+            <li  v-if="foods.banner" class="eve swiper-slide" v-for="(eve,index) in foods.banner" :key="index">
               <img v-if="foods.banner" :src="eve.picUrl" alt="">
             </li>
           </ul>
@@ -21,6 +21,8 @@
           <ul class="smallImgUl">
             <li v-if="foods.column" class="smallImg" v-for="(eve,index) in foods.column" :key="index">
               <img v-if="foods.column" :src="eve.picUrl" alt="">
+              <span>{{eve.articleCount}}</span>
+              <div class="text ellipsis">{{eve.title}}</div>
             </li>
           </ul>
 
@@ -180,13 +182,8 @@
               <span>{{findOne.title}}</span>
             </div>
           </div>
-
-
         </div>
       </div>
-
-
-
     </div>
 
   </div>
@@ -194,6 +191,7 @@
 
 <script>
   import BScroll from 'better-scroll'
+  import Swiper from 'swiper'
   import {mapState} from 'vuex'
 
   export default {
@@ -207,9 +205,15 @@
     },
     mounted(){
 
+
       this.$store.dispatch('getFoods',()=>{
         this.$nextTick(()=>{
-          //console.log('-------',foods.banner)
+          new Swiper ('.swiper-container', {
+
+            slidesPerView : 1.2,    //置slider容器能够同时显示的slides数量(carousel模式)。
+            spaceBetween : 30,
+            loop: true, // 循环模式选项
+          });
         })
       });
 
@@ -232,6 +236,8 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixins.styl"
+  body
+    background #f4f4f4
   .goods
     width: 100%
     height:100%
@@ -261,11 +267,11 @@
 
     .goodsContent
       .selloutGoods
+        background #fff
         width 100%
-        height
         .picsContainer
           width (750/$rem)
-          height (433/$rem)
+          height (400/$rem)
           display flex
           justify-content center
           align-items: center
@@ -273,23 +279,23 @@
             display flex
             align-items center
             .eve
-              width (670/$rem)
+              width (690/$rem)
               height (385/$rem)
-              margin 0 (10/$rem)
               >img
                 display block
-                width (670/$rem)
-                height (385/$rem)
+                width 100%
+                height: 5.13333rem
                 border-radius (20/$rem)
         .smallImgContainer
           width (750/$rem)
           height (240/$rem)
           display flex
-          padding:0 (30/$rem) 0 (30/$rem)
+          padding-bottom (50/$rem)
+          //padding:0 (30/$rem) 0 (60/$rem)
           .smallImgUl
             display flex
             align-items center
-            //padding 0 (30/$rem)
+            padding 0 (40/$rem)
             .smallImg
               width (164/$rem)
               height (164/$rem)
@@ -298,13 +304,26 @@
               //background-size  cover
               margin-right (30/$rem)
               border-radius (10/$rem)
+              position relative
               >img
                 display block
                 width (164/$rem)
                 height (164/$rem)
+              >span
+                font-size .32rem
+                color #fff
+                position absolute
+                top (2/$rem)
+                right (2/$rem)
+              >.text
+                font-size .32rem
+                color #333333
+                text-align center
+                margin-top (20/$rem)
       .goodsContainer
+        background #fff
+        margin-top (20/$rem)
         width (690/$rem)
-        height (2514/$rem)
         padding:0 (30/$rem) (40/$rem) (30/$rem)
         .goodsPick
           width:(690/$rem)
@@ -360,6 +379,7 @@
 
 
         .twoPick
+          //widthLine(100%)
           .first
             margin-bottom (35/$rem)
             width 100%
@@ -416,6 +436,7 @@
 
 
         .tenPoint
+
           .tenContent
             width (690/$rem)
             height (531/$rem)
